@@ -17,7 +17,7 @@ export default function Page() {
         <div>
             <List sx={{ width: '100%' }}>
                 {links.map((link) => (
-                    <ListItem>
+                    <ListItem key={link.name}>
                         <ListItemAvatar>
                             <Link href={link.href} >
                                 <Avatar>
