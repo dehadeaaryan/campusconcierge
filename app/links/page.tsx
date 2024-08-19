@@ -7,17 +7,6 @@ import Link from "next/link";
 import * as React from "react";
 import MenuBar from "../components/MenuBar";
 
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#4d1979',
-        },
-        secondary: {
-            main: '#a3a9ac',
-        },
-    },
-});
-
 const links = [
     {
         name: 'Waits 24-25',
@@ -88,32 +77,29 @@ const links = [
 
 export default function Page() {
     return (
-        <React.StrictMode>
-            <ThemeProvider theme={theme}>
-                <main className="flex min-h-screen flex-col items-center">
-                    <MenuBar />
-                    <List sx={{ width: '100%' }}>
-                        {links.map((link) => (
-                            <ListItem key={link.name} sx={{ cursor: 'pointer', '&:hover': { color: 'primary.main' } }}>
-                                <ListItemAvatar>
-                                    <Link href={link.href} >
-                                        <Avatar>
-                                            {
-                                                link.type === 'folder' ?
-                                                    <Folder />
-                                                    : link.type === 'file' ?
-                                                        <Article />
-                                                        :
-                                                        <Input />}
-                                        </Avatar>
-                                    </Link>
-                                </ListItemAvatar>
-                                <ListItemText primary={link.name} secondary={link.href} onClick={() => { location.href = link.href }} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </main>
-            </ThemeProvider>
-        </React.StrictMode>
+        <main className="w-full flex h-screen flex-col items-center overflow-hidden">
+            <MenuBar />
+            <List className="w-full overflow-y-auto">
+                {links.map((link) => (
+                    <ListItem key={link.name} className="cursor-pointer hover:bg-gray-700">
+                        <ListItemAvatar>
+                            <Link href={link.href} >
+                                <Avatar className="bg-[#4d1979]">
+                                    {
+                                        link.type === 'folder' ?
+                                            <Folder />
+                                            : link.type === 'file' ?
+                                                <Article />
+                                                :
+                                                <Input />}
+                                </Avatar>
+                            </Link>
+                        </ListItemAvatar>
+                        <ListItemText className="flex md:hidden" primary={link.name} onClick={() => { location.href = link.href }} />
+                        <ListItemText className="hidden md:flex" primary={link.name} secondary={link.href} onClick={() => { location.href = link.href }} />
+                    </ListItem>
+                ))}
+            </List>
+        </main>
     )
 }

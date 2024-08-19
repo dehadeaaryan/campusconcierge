@@ -45,15 +45,15 @@ const MenuBar = () => {
     };
 
     return (
-        <AppBar position="sticky">
-            <Container maxWidth="xl">
+        <AppBar position="sticky" className='bg-[#4d1979] w-screen'>
+            <Container>
                 <Toolbar disableGutters>
                     <SchoolIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -108,7 +108,7 @@ const MenuBar = () => {
                         variant="h5"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
