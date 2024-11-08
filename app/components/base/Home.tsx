@@ -5,6 +5,8 @@ import MenuBar from "../MenuBar";
 import { Button, createTheme } from "@mui/material";
 import { ThemeProvider } from '@emotion/react';
 import Link from 'next/link';
+import Landing from '../Landing';
+import { UniversityDTO } from '@/app/models/University';
 
 const theme = createTheme({
     palette: {
@@ -17,7 +19,7 @@ const theme = createTheme({
     },
 });
 
-export default function Home() {
+export default function Home({ universities }: { universities: UniversityDTO[] }) {
     return (
         <React.StrictMode>
             <ThemeProvider theme={theme}>
@@ -28,6 +30,7 @@ export default function Home() {
                         <p className="text-lg mt-4">A front desk log for simple community management. Only supporting Waits Hall at TCU</p>
                     </section>
                     <Link href={'/links'} ><Button variant="contained" color="primary">Links</Button></Link>
+                    <Landing universities={universities} />
                 </main>
             </ThemeProvider>
         </React.StrictMode>

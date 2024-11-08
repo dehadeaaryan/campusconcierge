@@ -1,7 +1,13 @@
-import Home from "./components/base/Home";
+'use server';
+import { fetchUniversities } from "./actions/university";
+import Container from "./components/base/Container";
+import Landing from "./components/Landing";
 
-export default function Page() {
+export default async function Page() {
+    const universities = await fetchUniversities();
     return (
-        <Home />
+        <Container>
+            <Landing universities={universities} />
+        </Container>
     );
 }
